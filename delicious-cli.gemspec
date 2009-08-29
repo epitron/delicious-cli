@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.executables = ["dels"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.markdown"
+     "README.rdoc"
   ]
   s.files = [
     "lib/delicious-cli.rb",
