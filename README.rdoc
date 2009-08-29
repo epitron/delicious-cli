@@ -1,4 +1,4 @@
-# delicious-cli
+= delicious-cli
 
 Locally mirror your delicious links, then search them. Example:
 
@@ -34,7 +34,7 @@ Locally mirror your delicious links, then search them. Example:
 
     * Redownloading database...
     * Retrieving all links... (3465 links found)
-    * Inserting links into database...............................................................................................done!
+    * Inserting links into database...done!
 
 === Downloading new links (since last sync):
 
