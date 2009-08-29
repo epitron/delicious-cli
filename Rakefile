@@ -12,6 +12,7 @@ begin
     gem.homepage = "http://github.com/epitron/delicious-cli"
     gem.authors = ["epitron"]
     gem.bindir = 'bin'
+    gem.files = FileList['lib/**/*.rb']
     gem.add_dependency('sequel')
     gem.add_dependency('httparty')
     gem.add_dependency('colorize')

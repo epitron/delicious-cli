@@ -1,11 +1,8 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 #################################################################
-#p File.dirname(__FILE__)
-#Dir.chdir( File.dirname(__FILE__) )
-#################################################################
 
-require "log"
+require "delicious-cli/log"
 
 libs = %w[
   rubygems
@@ -14,14 +11,14 @@ libs = %w[
   optparse/time
   ostruct
 
-  db
-  display
-  api
-  settings
+  delicious-cli/db
+  delicious-cli/display
+  delicious-cli/api
+  delicious-cli/settings
 ]
 
 libs.each do |lib|
-  $log.debug "loading #{lib}"
+  #$log.debug "loading #{lib}"
   require lib
 end
 

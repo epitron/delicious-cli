@@ -1,8 +1,8 @@
 require 'sequel'
 require 'sequel/extensions/blank'
 
-require 'settings'
-require 'api'
+require 'delicious-cli/settings'
+require 'delicious-cli/api'
 
 #################################################################
 

@@ -1,5 +1,5 @@
 require 'httparty'
-require 'settings'
+require 'delicious-cli/settings'
 
 # Documentation:
 #   http://delicious.com/help/api

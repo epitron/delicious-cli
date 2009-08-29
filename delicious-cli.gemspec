@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{delicious-cli}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["epitron"]
@@ -19,13 +19,12 @@ Gem::Specification.new do |s|
      "README.markdown"
   ]
   s.files = [
-    ".document",
-     ".gitignore",
-     "LICENSE",
-     "Rakefile",
-     "lib/delicious-cli.rb",
-     "test/delicious-cli_test.rb",
-     "test/test_helper.rb"
+    "lib/delicious-cli.rb",
+     "lib/delicious-cli/api.rb",
+     "lib/delicious-cli/db.rb",
+     "lib/delicious-cli/display.rb",
+     "lib/delicious-cli/log.rb",
+     "lib/delicious-cli/settings.rb"
   ]
   s.homepage = %q{http://github.com/epitron/delicious-cli}
   s.rdoc_options = ["--charset=UTF-8"]

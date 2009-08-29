@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'yaml'
 
-require 'log'
+require 'delicious-cli/log'
 
 #################################################################
 HOMEDIR    = File.expand_path("~")
