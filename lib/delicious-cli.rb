@@ -81,7 +81,12 @@ def main
   # In it!
   
   Database.init!
-  Settings.load!
+  begin
+    Settings.load!
+  rescue Errno::ENOENT
+    config
+    retry
+  end
   
   Delicious.basic_auth(Settings["username"], Settings["password"])
 
