@@ -1,6 +1,6 @@
-= delicious-cli
+= Delicious.com Command-line Interface
 
-Locally mirror your delicious links, then search them. Example:
+Locally mirror your delicious links, and search them. Usage:
 
     dels <search query>
 
@@ -11,7 +11,10 @@ Locally mirror your delicious links, then search them. Example:
 
 == Example:
 
-=== Setting your delicious username/password:
+=== Set your delicious login information:
+
+(If you have never configured delicious-cli before, this will automatically
+happen the first time you run it.)
 
     epi@fizz$ dels -c
     
@@ -28,7 +31,7 @@ Locally mirror your delicious links, then search them. Example:
       |_ Login successful! Saving config...
 
 
-=== Downloading all your delicious links:
+=== Download all your delicious links:
 
     epi@fizz$ dels -r
 
@@ -36,7 +39,7 @@ Locally mirror your delicious links, then search them. Example:
     * Retrieving all links... (3465 links found)
     * Inserting links into database...done!
 
-=== Downloading new links (since last sync):
+=== Download new links (since last sync):
 
     epi@fizz$ dels -s
     

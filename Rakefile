@@ -16,6 +16,7 @@ begin
     gem.add_dependency('sequel')
     gem.add_dependency('httparty')
     gem.add_dependency('colorize')
+    gem.add_dependency('sqlite3-ruby')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

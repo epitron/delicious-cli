@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{delicious-cli}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["epitron"]
@@ -44,14 +44,17 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<sequel>, [">= 0"])
       s.add_runtime_dependency(%q<httparty>, [">= 0"])
       s.add_runtime_dependency(%q<colorize>, [">= 0"])
+      s.add_runtime_dependency(%q<sqlite3-ruby>, [">= 0"])
     else
       s.add_dependency(%q<sequel>, [">= 0"])
       s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<colorize>, [">= 0"])
+      s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
     end
   else
     s.add_dependency(%q<sequel>, [">= 0"])
     s.add_dependency(%q<httparty>, [">= 0"])
     s.add_dependency(%q<colorize>, [">= 0"])
+    s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
   end
 end
