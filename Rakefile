@@ -4,14 +4,17 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.name = "delicious-cli"
     gem.summary = %Q{Delicious.com commandline interface}
     gem.description = %Q{A commandline tool which lets you download all your delicious.com links into a local SQLite database and search them (with pretty color-coded results).}
     gem.email = "chris@ill-logic.com"
     gem.homepage = "http://github.com/epitron/delicious-cli"
     gem.authors = ["epitron"]
-    gem.add_development_dependency "thoughtbot-shoulda"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.bindir = 'bin'
+    gem.add_dependency('sequel')
+    gem.add_dependency('httparty')
+    gem.add_dependency('colorize')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

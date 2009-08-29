@@ -1,0 +1,63 @@
+# delicious-cli
+
+Locally mirror your delicious links, then search them. Example:
+
+    dels <search query>
+
+== Installation
+
+    gem sources --add http://gemcutter.org
+    gem install delicious-cli
+
+== Example:
+
+=== Setting your delicious username/password:
+
+    epi@fizz$ dels -c
+    
+    Delicious login info
+    ---------------------------
+    
+    Username: mydeliciouslogin
+    Password: mypassword
+    
+    User: "mydeliciouslogin" | Pass: "mypassword"
+    Is this correct? [y/N] y
+    
+    * Checking that login/password works...
+      |_ Login successful! Saving config...
+
+
+=== Downloading all your delicious links:
+
+    epi@fizz$ dels -r
+
+    * Redownloading database...
+    * Retrieving all links... (3465 links found)
+    * Inserting links into database...............................................................................................done!
+
+=== Downloading new links (since last sync):
+
+    epi@fizz$ dels -s
+    
+    * Synchronizing database...
+    * Retrieving new links... (5 links found)
+    * Inserting links into database...done!
+
+== Commandline options:
+
+Usage: dels [options] <search query>
+
+Specific options:
+    -d, --debug                      Debug info
+    -s, --sync                       Synchronize links
+    -r, --redownload                 Erase database and redownload all links
+    -c, --config                     Configure app (set delicious username/password)
+    -t, --test-auth                  Test that authentication info works
+
+Common options:
+    -h, --help                       Show this message
+
+== Copyright
+
+Copyright (c) 2009 Chris Gahan. See LICENSE for details.
