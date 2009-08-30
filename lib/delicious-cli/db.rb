@@ -104,9 +104,13 @@ class Database
     @@posts << params
   end
   
-  def self.find(query)
-    query = "%#{query}%" if query.is_a? String
-    @@posts.filter(:extended.like(query) | :description.like(query) | :tag.like(query)).order(:time)
+  def self.find(words)
+    sequel_query = @@posts
+    for word in words
+      pattern = "%#{word}%" 
+      sequel_query = sequel_query.filter(:extended.like(pattern) | :description.like(pattern) | :tag.like(pattern))
+    end
+    sequel_query.order(:time)
   end
   
   

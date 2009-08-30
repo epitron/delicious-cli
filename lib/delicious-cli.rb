@@ -24,9 +24,9 @@ end
 
 #################################################################
 
-def search(query)
-  matches = Database.find(query)
-  matches.each { |match| display(match, query) }
+def search(words)
+  matches = Database.find(words)
+  matches.each { |match| display(match, words) }
 end
 
 def sync
@@ -148,9 +148,8 @@ def main
   elsif options.sync
     sync
   else
-    exit 1 unless query = ARGV[0]
-    query = ARGV[0]
-    search(query)
+    exit 1 unless ARGV.size > 0
+    search(ARGV)
   end
   
 end

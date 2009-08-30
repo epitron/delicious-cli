@@ -8,16 +8,25 @@ begin
   require 'colorize'
   # Colourized hilite...
   class String
-    def hilite(query, color=:white)
-      query = Regexp.new( Regexp.escape(query), Regexp::IGNORECASE )
-      self.to_s.send(color).gsub(/(.*)(#{query})(.*)/) { $1.send(color) + $2.black.on_yellow + $3.send(color)}
+    def hilite(words, color=:white)
+      escaped_words = words.map { |word| Regexp.escape(word) }
+      matcher = /(#{escaped_words.join('|')})/io
+
+      chunks = self.to_s.split(matcher)
+      chunks.map do |chunk|
+        if chunk =~ matcher
+          chunk.black.on_yellow
+        else
+          chunk.send(color)
+        end
+      end.join('')
     end
   end
 rescue LoadError
   STDERR.puts "Note: You should install the 'colorize' gem for extra prettiness.\n"
   # Monochrome hilite does nothing...
   class String
-    def hilite(query); self; end
+    def hilite(words); self; end
   end
 end
 
