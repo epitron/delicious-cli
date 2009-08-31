@@ -131,6 +131,13 @@ def main
       puts
       exit
     end
+
+    opts.on("-v", "--version", "Version information") do |opt|
+      versionfile = File.join(File.dirname(File.expand_path(__FILE__)), "..", "VERSION")
+      versionstring = open(versionfile).read
+      puts "delicious-cli v#{versionstring}"
+      puts
+    end
     
   end.parse!
   
