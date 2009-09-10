@@ -35,7 +35,7 @@ class Database
   end
   
   def self.clear!
-    File.delete @@filename
+    File.delete @@filename if File.exists? @@filename
     @@posts = []
   end
 

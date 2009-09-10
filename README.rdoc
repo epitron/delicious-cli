@@ -1,22 +1,49 @@
 = Delicious.com Command-line Interface
 
-Locally mirror your delicious links, and search them. Usage:
+== Concept
 
-    dels <search query>
+This program lets you locally mirror your delicious links, and quickly search them (with pretty colour-coded results).
+
+Usage:
+
+    delicious <search query>
+         or
+    dels <search query> (if you're into the brevity thing)
+
 
 == Installation
 
     gem sources --add http://gemcutter.org
     gem install delicious-cli
 
-== Example:
 
-=== Set your delicious login information:
+== Configuration
 
-(If you have never configured delicious-cli before, this will automatically
-happen the first time you run it.)
+Just run "delicious" with no options and it will prompt you for your login and password and save the settings to ~/.delicious.  
 
-    epi@fizz$ dels -c
+
+== Commandline options:
+
+Usage: delicious [options] <search query>
+
+Specific options:
+    -s, --sync                       Synchronize links
+    -r, --redownload                 Erase database and redownload all links
+    -c, --config                     Configure login info (set delicious username/password)
+    -t, --test-auth                  Test that authentication info works
+    -d, --debug                      Debug info
+
+Common options:
+    -v, --version                    Version information
+    -h, --help                       Show this message
+
+    
+== Common Tasks
+
+
+=== Change your login information:
+
+    epi@fizz$ delicious -c
     
     Delicious login info
     ---------------------------
@@ -31,36 +58,27 @@ happen the first time you run it.)
       |_ Login successful! Saving config...
 
 
-=== Download all your delicious links:
+=== Download new links (since last update):
 
-    epi@fizz$ dels -r
-
-    * Redownloading database...
-    * Retrieving all links... (3465 links found)
-    * Inserting links into database...done!
-
-=== Download new links (since last sync):
-
-    epi@fizz$ dels -s
+    epi@fizz$ delicious -s
     
     * Synchronizing database...
-    * Retrieving new links... (5 links found)
-    * Inserting links into database...done!
+      |_ Retrieving new links... (5 links found)
+      |_ Processing links...done!
+      |_ Saving database...done!
 
-== Commandline options:
+      
+=== Clear the database and redownload all links:
 
-Usage: dels [options] <search query>
+    epi@fizz$ delicious -r
 
-Specific options:
-    -d, --debug                      Debug info
-    -s, --sync                       Synchronize links
-    -r, --redownload                 Erase database and redownload all links
-    -c, --config                     Configure app (set delicious username/password)
-    -t, --test-auth                  Test that authentication info works
+    * Redownloading database...
+      |_ Retrieving all links... (3483 links found)
+      |_ Processing links...done!
+      |_ Saving database...done!
 
-Common options:
-    -h, --help                       Show this message
 
 == Copyright
 
-Copyright (c) 2009 Chris Gahan. See LICENSE for details.
+Copyright (c) 2009 Chris Gahan. See LICENSE for more details.
+

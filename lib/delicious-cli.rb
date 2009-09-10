@@ -40,7 +40,7 @@ def redownload
   Database.sync
 end
 
-def config
+def config(first_time = false)
   # prompt user and stuff
   puts "Delicious login info"
   puts "---------------------------"
@@ -64,6 +64,10 @@ def config
       Settings["username"] = username
       Settings["password"] = password
       Settings.save!
+
+      sync if first_time
+      
+      puts "* Everything is ready. Search away!" 
     else
       puts "  |_ Login failed! (Please check your credentials or network.)"
     end
@@ -84,7 +88,7 @@ def main
   begin
     Settings.load!
   rescue Errno::ENOENT
-    config
+    config(true)
     retry
   end
   
@@ -96,14 +100,10 @@ def main
   
   options = OpenStruct.new
   OptionParser.new do |opts|
-    opts.banner = "Usage: dels [options] <search query>"
-    opts.separator ""
+    opts.banner = "Usage: delicious [options] <search query>"
+    opts.separator " "
     opts.separator "Specific options:"
     
-    opts.on("-d", "--debug", "Debug info") do |opt|
-      options.debug = true
-    end
-  
     opts.on("-s", "--sync", "Synchronize links") do |opt|
       options.sync = true
     end
@@ -112,7 +112,7 @@ def main
       options.redownload = true
     end
   
-    opts.on("-c", "--config", "Configure app (set delicious username/password)") do |opt|
+    opts.on("-c", "--config", "Configure login info (set delicious username/password)") do |opt|
       options.config = true
     end
 
@@ -120,8 +120,12 @@ def main
       options.test_auth = true 
     end
 
+    opts.on("-d", "--debug", "Debug info") do |opt|
+      options.debug = true
+    end
+  
 
-    opts.separator ""
+    opts.separator " "
     opts.separator "Common options:"
 
     # No argument, shows at tail.  This will print an options summary.

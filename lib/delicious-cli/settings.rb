@@ -29,7 +29,8 @@ end
 #################################################################
 
 unless File.exists? CONFIGDIR
-  $log.info "* Creating new config directory: #{CONFIGDIR}"
+  puts
+  puts "* Creating new configuration directory: #{CONFIGDIR}"
   FileUtils.mkdir_p CONFIGDIR 
 end
 
