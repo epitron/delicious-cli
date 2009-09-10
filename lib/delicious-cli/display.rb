@@ -32,8 +32,7 @@ end
 
 #################################################################
 
-def formatdate(date, width=11)
-  dt = DateTime.parse(date)
+def formatdate(dt, width=11)
   time = "%l:%M%P"
   date = "%d %b %g"
   #dt.strftime("#{date} #{time}")
@@ -46,14 +45,14 @@ end
 def display(post, query, indent_size=11)
   indent = " " * indent_size
 
-  date   = formatdate(post[:time], indent_size)
-  desc   = post[:description].hilite(query, :light_white)
-  ext    = post[:extended].hilite(query, :white)
-  url    = post[:href].hilite(query, :light_blue)
-  tags   = post[:tag].hilite(query, :light_cyan)
+  date   = formatdate(post["time"], indent_size)
+  desc   = post["description"].hilite(query, :light_white)
+  ext    = post["extended"].hilite(query, :white)
+  url    = post["href"].hilite(query, :light_blue)
+  tags   = post["tag"].hilite(query, :light_cyan)
 
   puts date + desc
-  puts indent + ext if post[:extended].any?
+  puts indent + ext if post["extended"].any?
   puts indent + url
   puts indent + "(".cyan + tags + ")".cyan
   puts

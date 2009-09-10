@@ -7,16 +7,14 @@ begin
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.name = "delicious-cli"
     gem.summary = %Q{Delicious.com commandline interface}
-    gem.description = %Q{A commandline tool which lets you download all your delicious.com links into a local SQLite database and search them (with pretty color-coded results).}
+    gem.description = %Q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
     gem.email = "chris@ill-logic.com"
     gem.homepage = "http://github.com/epitron/delicious-cli"
     gem.authors = ["epitron"]
     gem.bindir = 'bin'
     gem.files = FileList['lib/**/*.rb']
-    gem.add_dependency('sequel')
     gem.add_dependency('httparty')
     gem.add_dependency('colorize')
-    gem.add_dependency('sqlite3-ruby')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
