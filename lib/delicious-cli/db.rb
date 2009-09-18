@@ -19,6 +19,13 @@ Sample record:
 
 #################################################################
 
+def printflush(string)
+  print string
+  STDOUT.flush
+end
+
+#################################################################
+
 class Database
 
   @@filename = configfile('delicious.marshal')
@@ -49,12 +56,10 @@ class Database
     all = true if @@posts.empty?
     
     if all
-      print "  |_ Retrieving all links..."
-      STDOUT.flush
+      printflush "  |_ Retrieving all links..."
       posts = Delicious.posts_all
     else
-      print "  |_ Retrieving new links..."
-      STDOUT.flush
+      printflush "  |_ Retrieving new links..."
       posts = Delicious.posts_since(most_recent_time)
     end      
     
@@ -67,12 +72,12 @@ class Database
       return
     end      
     
-    print "  |_ Processing links..."
+    printflush "  |_ Processing links..."
     posts.each { |post| post["time_string"] = post["time"]; post["time"] = DateTime.parse(post["time_string"]) }
     @@posts += posts.sort_by { |post| post["time"] }    
     puts "done!"
     
-    print "  |_ Saving database..."
+    printflush "  |_ Saving database..."
     save!
     
     puts "done!"

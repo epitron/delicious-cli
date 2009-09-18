@@ -1,11 +1,9 @@
 require 'date'
-require 'colorize'
 
 #################################################################
 ## Load the colorize gem, and define the "hilite" function
 begin
-  require 'rubygems'
-  require 'colorize'
+  require 'delicious-cli/colorize'
   # Colourized hilite...
   class String
     def hilite(words, color=:white)

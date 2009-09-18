@@ -14,7 +14,6 @@ begin
     gem.bindir = 'bin'
     gem.files = FileList['lib/**/*.rb']
     gem.add_dependency('httparty')
-    gem.add_dependency('colorize')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
