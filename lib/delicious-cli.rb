@@ -29,6 +29,11 @@ def search(words)
   matches.each { |match| display(match, words) }
 end
 
+def last(n)
+  posts = Database.last(n)
+  posts.each { |post| display(post) }
+end
+
 def sync
   puts "* Synchronizing database..."
   Database.sync
@@ -112,6 +117,14 @@ def main
       options.redownload = true
     end
   
+    opts.on("-l", "--list [num]", "List the last [num] links (default 5, 0 for all)") do |opt|
+      if opt
+        options.list = opt.to_i
+      else
+        options.list = 5
+      end
+    end
+
     opts.on("-c", "--config", "Configure login info (set delicious username/password)") do |opt|
       options.config = true
     end
@@ -158,6 +171,8 @@ def main
     redownload
   elsif options.sync
     sync
+  elsif options.list
+    last(options.list)
   else
     exit 1 unless ARGV.size > 0
     search(ARGV)

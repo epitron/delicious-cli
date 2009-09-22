@@ -93,6 +93,10 @@ class Database
     @@posts << params
   end
   
+  def self.last(n)
+    @@posts[-n..-1]
+  end
+  
   def self.find(words)
 
     finders = words.map{|word| /#{word}/i }

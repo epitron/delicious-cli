@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{delicious-cli}
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["epitron"]
-  s.date = %q{2009-09-18}
+  s.date = %q{2009-09-22}
   s.description = %q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
   s.email = %q{chris@ill-logic.com}
   s.executables = ["dels", "delicious"]
