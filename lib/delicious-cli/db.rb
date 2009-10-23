@@ -100,7 +100,7 @@ class Database
   def self.find(words)
 
     finders = words.map{|word| /#{word}/i }
-    fields = %w[extended description tag]
+    fields = %w[extended description href tag]
     
     @@posts.select do |post|
       finders.all? do |finder|
