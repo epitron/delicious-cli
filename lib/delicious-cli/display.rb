@@ -65,7 +65,7 @@ class String
     left = 0
     
     loop do
-      edge   = left + width
+      edge   = left + width - 1
       right  = self.rindex(/\s+|$/, edge)
       
       if right.nil? or right < left
