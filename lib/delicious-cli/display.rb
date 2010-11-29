@@ -5,7 +5,7 @@ require 'open3'
 ## Load the colorize gem, and define the "hilite" function
 begin
   
-  require 'delicious-cli/colorize'
+  require 'delicious-cli/colored'
   
   # Colourized hilite...
   class String
@@ -26,14 +26,6 @@ begin
       end.join('')
     end
     
-  end
-  
-rescue LoadError
-  
-  STDERR.puts "Note: You should install the 'colorize' gem for extra prettiness.\n"
-  # Monochrome hilite does nothing...
-  class String
-    def hilite(words); self; end
   end
   
 end
@@ -108,10 +100,10 @@ def display(post, query=nil, indent_size=11)
   url          = post["href"].hilite(query, :light_blue)
   tag_lines    = post["tag"].wrap(wrap_size-2).map { |line| line.hilite(query, :light_cyan) }
 
-  if post["extended"].any?
-    ext_lines = post["extended"].wrap(wrap_size).map { |line| line.hilite(query, :white) }
-  else
+  if post["extended"].blank?
     ext_lines = []
+  else
+    ext_lines = post["extended"].wrap(wrap_size).map { |line| line.hilite(query, :white) }
   end
   
   # date / description
