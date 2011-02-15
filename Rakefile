@@ -14,6 +14,32 @@ begin
     gem.bindir = 'bin'
     gem.files = FileList['lib/**/*.rb']
     gem.add_dependency('httparty')
+
+    gem.post_install_message = %q{
+========================================================================
+Delicious-CLI installed!
+------------------------------------------------------------------------
+
+To configure your Delicious.com account, type:
+
+  $ dels
+  
+To search, type:
+
+  $ dels <search term(s)>
+
+To pull new links from your delicious account, type:
+
+  $ dels -s
+  
+To add dels -s to your crontab, type:
+
+  $ crontab -e
+  
+That's all, folks!
+  
+========================================================================
+}    
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
