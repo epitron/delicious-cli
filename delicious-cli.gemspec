@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{delicious-cli}
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["epitron"]
-  s.date = %q{2010-11-29}
+  s.date = %q{2011-02-14}
   s.description = %q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
   s.email = %q{chris@ill-logic.com}
   s.executables = ["delicious", "dels"]
@@ -27,8 +27,33 @@ Gem::Specification.new do |s|
     "lib/delicious-cli/settings.rb"
   ]
   s.homepage = %q{http://github.com/epitron/delicious-cli}
+  s.post_install_message = %q{
+========================================================================
+Delicious-CLI installed!
+------------------------------------------------------------------------
+
+To configure your Delicious.com account, type:
+
+  $ dels
+  
+To search, type:
+
+  $ dels <search term(s)>
+
+To pull new links from your delicious account, type:
+
+  $ dels -s
+  
+To add dels -s to your crontab, type:
+
+  $ crontab -e
+  
+That's all, folks!
+  
+========================================================================
+}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.5.2}
   s.summary = %q{Delicious.com commandline interface}
   s.test_files = [
     "test/delicious-cli_test.rb",
@@ -36,7 +61,6 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
