@@ -11,6 +11,7 @@ libs = %w[
   optparse/time
   ostruct
 
+  delicious-cli/blank
   delicious-cli/db
   delicious-cli/display
   delicious-cli/api
