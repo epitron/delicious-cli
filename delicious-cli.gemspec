@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{delicious-cli}
-  s.version = "0.4.1"
+  s.version = "0.4.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["epitron"]
-  s.date = %q{2011-02-14}
+  s.authors = [%q{epitron}]
+  s.date = %q{2011-09-29}
   s.description = %q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
   s.email = %q{chris@ill-logic.com}
-  s.executables = ["delicious", "dels"]
+  s.executables = [%q{delicious}, %q{dels}]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = [
     "lib/delicious-cli.rb",
     "lib/delicious-cli/api.rb",
+    "lib/delicious-cli/blank.rb",
     "lib/delicious-cli/colored.rb",
     "lib/delicious-cli/db.rb",
     "lib/delicious-cli/display.rb",
@@ -52,13 +53,9 @@ That's all, folks!
   
 ========================================================================
 }
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
   s.summary = %q{Delicious.com commandline interface}
-  s.test_files = [
-    "test/delicious-cli_test.rb",
-    "test/test_helper.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
