@@ -25,16 +25,6 @@ end
 
 #################################################################
 
-def search(words)
-  matches = Database.find(words)
-  matches.each { |match| display(match, words) }
-end
-
-def last(n)
-  posts = Database.last(n)
-  posts.each { |post| display(post) }
-end
-
 def sync
   puts "* Synchronizing database..."
   Database.sync
@@ -110,6 +100,14 @@ def main
     opts.separator " "
     opts.separator "Specific options:"
     
+    opts.on("-c", "--config", "(Re)configure login info (set your delicious username/password)") do |opt|
+      options.config = true
+    end
+
+    opts.on("-t", "--test-auth", "Test that authentication info works") do |opt|
+      options.test_auth = true 
+    end
+
     opts.on("-s", "--sync", "Synchronize links") do |opt|
       options.sync = true
     end
@@ -117,7 +115,11 @@ def main
     opts.on("-r", "--redownload", "Erase database and redownload all links") do |opt|
       options.redownload = true
     end
-  
+
+    opts.on("-a", "--all", "Show all links.") do |opt|
+      options.list = 0
+    end
+
     opts.on("-l", "--list [num]", "List the last [num] links (default 5, 0 for all)") do |opt|
       if opt
         options.list = opt.to_i
@@ -126,14 +128,10 @@ def main
       end
     end
 
-    opts.on("-c", "--config", "Configure login info (set delicious username/password)") do |opt|
-      options.config = true
+    opts.on("-j", "--json", "Output results as (pretty) JSON.") do |opt|
+      options.json = true
     end
-
-    opts.on("-t", "--test-auth", "Test that authentication info works") do |opt|
-      options.test_auth = true 
-    end
-
+  
     opts.on("-d", "--debug", "Debug info") do |opt|
       options.debug = true
     end
@@ -172,11 +170,29 @@ def main
     redownload
   elsif options.sync
     sync
-  elsif options.list
-    last(options.list)
   else
-    exit 1 unless ARGV.size > 0
-    search(ARGV)
+    
+    # get posts
+    if options.list
+      posts = Database.last(options.list)
+    else
+      words = ARGV
+      exit 1 unless words.size > 0
+      posts = Database.find(words)
+    end
+    
+    
+    if options.json
+      require 'json'
+      puts JSON.pretty_generate(posts)
+    else
+      if words
+        posts.each { |match| display(match, words) }
+      else
+        posts.each { |post| display(post) }
+      end
+    end
+    
   end
   
 end
