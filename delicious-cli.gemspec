@@ -4,15 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{delicious-cli}
-  s.version = "0.4.3"
+  s.name = "delicious-cli"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{epitron}]
-  s.date = %q{2011-09-29}
-  s.description = %q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
-  s.email = %q{chris@ill-logic.com}
-  s.executables = [%q{delicious}, %q{dels}]
+  s.authors = ["epitron"]
+  s.date = "2011-12-14"
+  s.description = "A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results)."
+  s.email = "chris@ill-logic.com"
+  s.executables = ["delicious", "dels"]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -27,35 +27,11 @@ Gem::Specification.new do |s|
     "lib/delicious-cli/log.rb",
     "lib/delicious-cli/settings.rb"
   ]
-  s.homepage = %q{http://github.com/epitron/delicious-cli}
-  s.post_install_message = %q{
-========================================================================
-Delicious-CLI installed!
-------------------------------------------------------------------------
-
-To configure your Delicious.com account, type:
-
-  $ dels
-  
-To search, type:
-
-  $ dels <search term(s)>
-
-To pull new links from your delicious account, type:
-
-  $ dels -s
-  
-To add dels -s to your crontab, type:
-
-  $ crontab -e
-  
-That's all, folks!
-  
-========================================================================
-}
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{Delicious.com commandline interface}
+  s.homepage = "http://github.com/epitron/delicious-cli"
+  s.post_install_message = "\n========================================================================\nDelicious-CLI installed!\n------------------------------------------------------------------------\n\nTo configure your Delicious.com account, type:\n\n  $ dels\n  \nTo search, type:\n\n  $ dels <search term(s)>\n\nTo pull new links from your delicious account, type:\n\n  $ dels -s\n  \nTo add dels -s to your crontab, type:\n\n  $ crontab -e\n  \nThat's all, folks!\n  \n========================================================================\n"
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.10"
+  s.summary = "Delicious.com commandline interface"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

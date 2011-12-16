@@ -20,7 +20,11 @@ class Delicious
 
   def self.posts_all(options={})
     result = get('/posts/all', :query=>options)
-    [result["posts"]["post"]].flatten  # ensure it's an array
+    begin
+      [result["posts"]["post"]].flatten
+    rescue
+      []
+    end
   end
   
   def self.posts_since(time_string)
