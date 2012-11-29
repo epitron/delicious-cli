@@ -8,12 +8,11 @@ Usage:
 
     delicious <search query>
          or
-    dels <search query> (if you're into the brevity thing)
+    dels <search query> (if you're into the whole brevity thing)
 
 
 == Installation
 
-    gem sources --add http://gemcutter.org
     gem install delicious-cli
 
 
