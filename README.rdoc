@@ -1,5 +1,7 @@
 = Delicious.com Command-line Interface
 
+http://chris.ill-logic.com/images/delicious-cli.png
+
 == Concept
 
 This program lets you locally mirror your delicious links, and quickly search them (with pretty colour-coded results).
