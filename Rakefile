@@ -1,85 +1,18 @@
-require 'rubygems'
-require 'rake'
+gem_version = File.read("VERSION").strip
+gem_name = "delicious-cli"
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-    gem.name = "delicious-cli"
-    gem.summary = %Q{Delicious.com commandline interface}
-    gem.description = %Q{A commandline tool which lets you download all your delicious.com links and search them (with pretty color-coded results).}
-    gem.email = "chris@ill-logic.com"
-    gem.homepage = "http://github.com/epitron/delicious-cli"
-    gem.authors = ["epitron"]
-    gem.bindir = 'bin'
-    gem.files = FileList['lib/**/*.rb']
-    gem.add_dependency('httparty')
-
-    gem.post_install_message = %q{
-========================================================================
-Delicious-CLI installed!
-------------------------------------------------------------------------
-
-To configure your Delicious.com account, type:
-
-  $ dels
-  
-To search, type:
-
-  $ dels <search term(s)>
-
-To pull new links from your delicious account, type:
-
-  $ dels -s
-  
-To add dels -s to your crontab, type:
-
-  $ crontab -e
-  
-That's all, folks!
-  
-========================================================================
-}    
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+task :build do
+  system "gem build #{gem_name}.gemspec"
+end
+ 
+task :release => :build do
+  system "gem push #{gem_name}-#{gem_version}.gem"
 end
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/*_test.rb'
-  test.verbose = true
+task :install => :build do
+  system "gem install #{gem_name}-#{gem_version}.gem"
 end
 
-begin
-  require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/*_test.rb'
-    test.verbose = true
-  end
-rescue LoadError
-  task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
-  end
-end
-
-task :test => :check_dependencies
-
-task :default => :test
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION')
-    version = File.read('VERSION')
-  else
-    version = ""
-  end
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "delicious-cli #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+task :pry do
+  system "pry --gem"
 end
